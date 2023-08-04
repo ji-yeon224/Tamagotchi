@@ -13,11 +13,17 @@ class SelectViewController: UIViewController {
 
     @IBOutlet var collectionView: UICollectionView!
     
+    let bgColor = UIColor(red: 232 / 255, green: 251 / 255, blue: 252 / 255, alpha: 1)
     
+    var tamaList = TamagotchiList()
+    var state: State = .initial
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = setBackgroundColor()
+        collectionView.backgroundColor = setBackgroundColor()
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -27,6 +33,8 @@ class SelectViewController: UIViewController {
         let nib = UINib(nibName: SelectCollectionViewCell.identifier, bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: SelectCollectionViewCell.identifier)
         collectionLayout()
+        
+        UserDefaults.standard.set("대장", forKey: "userName")
         
     }
     
@@ -48,6 +56,15 @@ class SelectViewController: UIViewController {
 
 }
 
+extension SelectViewController {
+    
+    
+    
+    
+    
+}
+
+//collectionView
 extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -67,8 +84,33 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: PopUpViewController.identifier) as! PopUpViewController
+        
+        vc.modalPresentationStyle = .overFullScreen
+        if indexPath.row >= tamaList.tamagotchi.count { //준비 셀 클릭 시
+            showAlert("아직 준비중입니다!!")
+            
+        }else { // 다마고치 셀 클릭 시
+            vc.tama = tamaList.tamagotchi[indexPath.row]
+            present(vc, animated: true)
+        }
+        
+        
+        
+    }
+    
+    func showAlert(_ message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(ok)
+        
+        present(alert, animated: true)
+    }
+    
+    
     
 }
