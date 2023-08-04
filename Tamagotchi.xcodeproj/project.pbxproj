@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		CEC161422A7CD114002BB3C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161412A7CD114002BB3C5 /* AppDelegate.swift */; };
 		CEC161442A7CD114002BB3C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161432A7CD114002BB3C5 /* SceneDelegate.swift */; };
-		CEC161462A7CD114002BB3C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161452A7CD114002BB3C5 /* ViewController.swift */; };
 		CEC161492A7CD114002BB3C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC161472A7CD114002BB3C5 /* Main.storyboard */; };
 		CEC1614B2A7CD115002BB3C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC1614A2A7CD115002BB3C5 /* Assets.xcassets */; };
 		CEC1614E2A7CD115002BB3C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC1614C2A7CD115002BB3C5 /* LaunchScreen.storyboard */; };
+		CEC161582A7CDAD1002BB3C5 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161572A7CDAD1002BB3C5 /* SelectViewController.swift */; };
+		CEC1615B2A7CDB96002BB3C5 /* SelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161592A7CDB96002BB3C5 /* SelectCollectionViewCell.swift */; };
+		CEC1615C2A7CDB96002BB3C5 /* SelectCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC1615A2A7CDB96002BB3C5 /* SelectCollectionViewCell.xib */; };
+		CEC1615E2A7CE2D2002BB3C5 /* TamagotchiEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1615D2A7CE2D2002BB3C5 /* TamagotchiEnum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CEC1613E2A7CD114002BB3C5 /* Tamagotchi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagotchi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC161412A7CD114002BB3C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEC161432A7CD114002BB3C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CEC161452A7CD114002BB3C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CEC161482A7CD114002BB3C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEC1614A2A7CD115002BB3C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEC1614D2A7CD115002BB3C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEC1614F2A7CD115002BB3C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEC161572A7CDAD1002BB3C5 /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
+		CEC161592A7CDB96002BB3C5 /* SelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionViewCell.swift; sourceTree = "<group>"; };
+		CEC1615A2A7CDB96002BB3C5 /* SelectCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectCollectionViewCell.xib; sourceTree = "<group>"; };
+		CEC1615D2A7CE2D2002BB3C5 /* TamagotchiEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiEnum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +64,11 @@
 			children = (
 				CEC161412A7CD114002BB3C5 /* AppDelegate.swift */,
 				CEC161432A7CD114002BB3C5 /* SceneDelegate.swift */,
-				CEC161452A7CD114002BB3C5 /* ViewController.swift */,
 				CEC161472A7CD114002BB3C5 /* Main.storyboard */,
+				CEC161592A7CDB96002BB3C5 /* SelectCollectionViewCell.swift */,
+				CEC1615A2A7CDB96002BB3C5 /* SelectCollectionViewCell.xib */,
+				CEC161572A7CDAD1002BB3C5 /* SelectViewController.swift */,
+				CEC1615D2A7CE2D2002BB3C5 /* TamagotchiEnum.swift */,
 				CEC1614A2A7CD115002BB3C5 /* Assets.xcassets */,
 				CEC1614C2A7CD115002BB3C5 /* LaunchScreen.storyboard */,
 				CEC1614F2A7CD115002BB3C5 /* Info.plist */,
@@ -125,6 +134,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEC1615C2A7CDB96002BB3C5 /* SelectCollectionViewCell.xib in Resources */,
 				CEC1614E2A7CD115002BB3C5 /* LaunchScreen.storyboard in Resources */,
 				CEC1614B2A7CD115002BB3C5 /* Assets.xcassets in Resources */,
 				CEC161492A7CD114002BB3C5 /* Main.storyboard in Resources */,
@@ -138,8 +148,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEC161462A7CD114002BB3C5 /* ViewController.swift in Sources */,
+				CEC1615B2A7CDB96002BB3C5 /* SelectCollectionViewCell.swift in Sources */,
+				CEC1615E2A7CE2D2002BB3C5 /* TamagotchiEnum.swift in Sources */,
 				CEC161422A7CD114002BB3C5 /* AppDelegate.swift in Sources */,
+				CEC161582A7CDAD1002BB3C5 /* SelectViewController.swift in Sources */,
 				CEC161442A7CD114002BB3C5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
