@@ -28,6 +28,7 @@ class MainViewController: UIViewController {
     var tamaName = ""
     var tamaInfo:TamagotchiInfo! {
         didSet{
+            //print(tamaInfo)
             UserDefaults.standard.set(try? PropertyListEncoder().encode(tamaInfo), forKey: tamaInfo.name)
         }
     }
@@ -37,7 +38,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(#function)
         
         tamaInfo = getTamaInfo()
         
@@ -47,6 +48,7 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .darkGray
         
         setProperties()
+       
         
     }
     
@@ -54,11 +56,11 @@ class MainViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        print(#function)
         userName = UserDefaults.standard.string(forKey: "userName")!
         title = "\(userName)님의 다마고치"
-        var msg = messageList.growMessage.randomElement()!
-        changeMessage(msg)
         
+        changeTamaInfo() //이미지 정보 메세지 변경
     }
     
     
@@ -103,6 +105,7 @@ class MainViewController: UIViewController {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(identifier: SettingViewController.identifier) as! SettingViewController
         
+       // vc.tamaList = tamaInfo
         navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -114,6 +117,7 @@ class MainViewController: UIViewController {
 //디자인 및 설정
 extension MainViewController {
     
+    //메세지, 정보, 이미지 변경
     func changeTamaInfo() {
         infoLabel.text = "LV\(tamaInfo.level()) | 밥알 \(tamaInfo.meal)개 | 물방울 \(tamaInfo.water)개"
         var imgNum = tamaInfo.level()
@@ -153,15 +157,12 @@ extension MainViewController {
         nameLabel.text = tamaInfo?.name
         setNameLabel(label: nameLabel)
         
-        tamaImageView.image = UIImage(named: "\(tamaInfo.imgNum)-1")
+        //changeTamaInfo()
+        
         tamaImageView.contentMode = .scaleAspectFill
         textImageView.image = UIImage(named: "bubble")
         textImageView.contentMode = .scaleToFill
         
-        mealTextField.keyboardType = .decimalPad
-        waterTextField.keyboardType = .decimalPad
-        
-        infoLabel.text = "LV\(tamaInfo.level()) | 밥알 \(tamaInfo.meal)개 | 물방울 \(tamaInfo.water)개"
         infoLabel.textColor = .darkGray
         infoLabel.font = .systemFont(ofSize: 13)
         infoLabel.textAlignment = .center
@@ -171,8 +172,12 @@ extension MainViewController {
         messageLabel.numberOfLines = 0
         messageLabel.textColor = .darkGray
         
-        designButton(button: waterButton, image: "leaf.circle", title: "물먹기")
-        designButton(button: mealButton, image: "drop.circle", title: "밥먹기")
+        mealTextField.keyboardType = .decimalPad
+        waterTextField.keyboardType = .decimalPad
+        
+        
+        designButton(button: waterButton, image: "drop.circle", title: "물먹기")
+        designButton(button: mealButton, image: "leaf.circle", title: "밥먹기")
         
        
     }
@@ -195,6 +200,7 @@ extension MainViewController {
     func getTamaInfo() -> TamagotchiInfo {
         guard let tamaInfo = UserDefaults.standard.value(forKey: tamaName) as? Data,
               let data = try? PropertyListDecoder().decode(TamagotchiInfo.self, from: tamaInfo) else {return TamagotchiInfo(name: "", profile: "", imgNum: -1)}
+        print(data)
         return data
     }
     

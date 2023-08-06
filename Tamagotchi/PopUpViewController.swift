@@ -43,35 +43,23 @@ class PopUpViewController: UIViewController {
     }
     
     @IBAction func selectButtonClicked(_ sender: UIButton) {
-        print("start")
-        UserDefaults.standard.set("대장", forKey: "userName") //초기화 시에만 설정
         
-        //구초체 객체 저장
-        //UserDefaults.standard.set(try? PropertyListEncoder().encode(self.tamaInfo), forKey: tamaInfo.name)
-        
-        //UserDefaults.standard.set()
-        //UserDefaults.standard.set(tamaList, forKey: "tamaList")
-        
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(tamaInfo), forKey: tamaInfo.name)
-        
-        UserDefaults.standard.set(true, forKey: "isSelected") //시작 뷰 바꾸기
-        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        if state.rawValue == "initial"{ //초기
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(tamaInfo), forKey: tamaInfo.name)
+            
+        }
         
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as! MainViewController
         let nav = UINavigationController(rootViewController: vc)
-        
         vc.tamaName = tamaInfo.name
-        
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
         sceneDelegate?.window?.rootViewController = nav
         sceneDelegate?.window?.makeKeyAndVisible()
-        //UserDefaults 값 설정 후 화면 전환
-//        switch state {
-//        case .initial:
-//            UserDefaults.standard.set(, forKey: <#T##String#>)
-
-        //case .change:
+        
+        
+       
     }
     
 

@@ -15,6 +15,8 @@ class SettingViewController: UIViewController {
     
     static let identifier = "SettingViewController"
     
+    var tamaList:[Tamagotchi] = []
+    
     
     @IBOutlet var settingTableView: UITableView!
     
@@ -102,10 +104,19 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func changeTamagotchi() {
+        //UserDefaults.standard.set(try? PropertyListEncoder().encode(), forKey: resetTama.name)
+        
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(identifier: SelectViewController.identifier) as! SelectViewController
         
-        navigationController?.pushViewController(vc, animated: true)
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        vc.state = .change
+        let nav = UINavigationController(rootViewController: vc)
+        sceneDelegate?.window?.rootViewController = nav
+        sceneDelegate?.window?.makeKeyAndVisible()
+        
+        //navigationController?.pushViewController(vc, animated: true)
     }
     
     func resetAlert() {

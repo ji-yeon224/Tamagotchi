@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum State {
+enum State: String {
     case change
     case initial
 }

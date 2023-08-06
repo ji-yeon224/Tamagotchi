@@ -13,7 +13,7 @@ class SelectViewController: UIViewController {
 
     @IBOutlet var collectionView: UICollectionView!
     
-    let bgColor = UIColor(red: 232 / 255, green: 251 / 255, blue: 252 / 255, alpha: 1)
+    //let bgColor = UIColor(red: 232 / 255, green: 251 / 255, blue: 252 / 255, alpha: 1)
     
     var tamaList = TamagotchiList()
     var state: State = .initial
@@ -21,7 +21,7 @@ class SelectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("select \(state.rawValue)")
         view.backgroundColor = setBackgroundColor()
         collectionView.backgroundColor = setBackgroundColor()
         
@@ -33,8 +33,10 @@ class SelectViewController: UIViewController {
         let nib = UINib(nibName: SelectCollectionViewCell.identifier, bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: SelectCollectionViewCell.identifier)
         collectionLayout()
+        if state == .initial{
+            UserDefaults.standard.set("대장", forKey: "userName")
+        }
         
-        UserDefaults.standard.set("대장", forKey: "userName")
         
     }
     
@@ -99,7 +101,7 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }else { // 다마고치 셀 클릭 시
             let tamaInfo = tamaList.tamagotchi[indexPath.row]
             vc.tamaInfo = tamaInfo
-        
+            vc.state = state
             
             
             present(vc, animated: true)
