@@ -16,4 +16,6 @@ struct Message {
     let maxMessage: [String] = ["nickname님 덕분에 다 컸어요!", "배불러용ㅠㅠ", "저 이제 다 컸어요! 고마워요 nickname님^_^"]
     let levelUPMessage: [String] = ["nickname님이 밥이랑 물 준 덕분에 이렇게 성장했어용!!", "저 많이 컸어용 고마워요 nickname님>_<", "nickname님이 돌봐주셔서 너무 행복해용"]
     
+    let overEatMessage: [String] = ["nickname님 너무 많아용ㅠㅠ", "조금만 주세용!!", "다 못먹겠어요 nickname님.."]
+    
 }

@@ -20,6 +20,8 @@ class NameChangeViewController: UIViewController {
         nameChangeTextField.text = UserDefaults.standard.string(forKey: "userName")
         nameChangeTextField.placeholder = "대장님 이름을 알려주세요!"
         
+        view.backgroundColor = setBackgroundColor()
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(changeUserName))
         navigationController?.navigationBar.tintColor = .darkGray
         

@@ -15,12 +15,14 @@ class SettingViewController: UIViewController {
     
     static let identifier = "SettingViewController"
     
+    
     @IBOutlet var settingTableView: UITableView!
     
     let setting = Setting.allCases
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        settingTableView.backgroundColor = setBackgroundColor()
         settingTableView.dataSource = self
         settingTableView.delegate = self
         
@@ -31,6 +33,7 @@ class SettingViewController: UIViewController {
         
         navigationController?.navigationBar.topItem?.title = ""
         navigationController?.navigationBar.tintColor = .darkGray
+        navigationController?.navigationBar.backgroundColor = setBackgroundColor()
         title = "설정"
         
 
@@ -58,7 +61,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier) as! SettingTableViewCell
-        
+        cell.backgroundColor = .clear
         let title = setting[indexPath.row]
         
         switch title {
@@ -92,10 +95,17 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
             
         case .change:
-            print("")
+            changeTamagotchi()
         case .reset:
             resetAlert()
         }
+    }
+    
+    func changeTamagotchi() {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: SelectViewController.identifier) as! SelectViewController
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func resetAlert() {

@@ -57,8 +57,7 @@ class MainViewController: UIViewController {
         userName = UserDefaults.standard.string(forKey: "userName")!
         title = "\(userName)님의 다마고치"
         var msg = messageList.growMessage.randomElement()!
-        msg = setMessageWithName(msg)
-        messageLabel.text = msg
+        changeMessage(msg)
         
     }
     
@@ -68,12 +67,16 @@ class MainViewController: UIViewController {
         
         if mealTextField.text!.count == 0 {
             tamaInfo.meal += 1
+            changeTamaInfo()
+        } else if Int(mealTextField.text!) ?? 0 > 99 { //한 번에 먹을 수 있는 최대치 초과
+            changeMessage(messageList.overEatMessage.randomElement()!)
         } else {
-            tamaInfo.meal += Int(mealTextField!.text!) ?? 0
+            tamaInfo.meal += Int(mealTextField.text!) ?? 0
             mealTextField.text = ""
+            changeTamaInfo()
         }
         
-        changeTamaInfo()
+        
         
     }
     
@@ -81,12 +84,16 @@ class MainViewController: UIViewController {
         
         if waterTextField.text!.count == 0 {
             tamaInfo.water += 1
+            changeTamaInfo()
+        } else if Int(waterTextField!.text!) ?? 0 > 49 { //한 번에 먹을 수 있는 최대치 초과
+            changeMessage(messageList.overEatMessage.randomElement()!)
         } else {
             tamaInfo.water += Int(waterTextField!.text!) ?? 0
             waterTextField.text = ""
+            changeTamaInfo()
         }
         
-        changeTamaInfo()
+       
 
     }
 
@@ -124,18 +131,19 @@ extension MainViewController {
         } else{
             msg = messageList.growMessage.randomElement()!
         }
-        msg = setMessageWithName(msg)
-        messageLabel.text = msg
+        changeMessage(msg)
         
     }
     
-    //닉네임 붙여서 메세지 멘트 가져오기
-    func setMessageWithName(_ string: String) -> String {
+    func changeMessage(_ string: String) {
+        var msg = string
         if string.contains("nickname") {
-            return string.replacingOccurrences(of: "nickname", with: userName)
+            msg = string.replacingOccurrences(of: "nickname", with: userName) //닉네임 붙여서 메세지 멘트 가져오기
         }
-        return string
+        messageLabel.text = msg
+        
     }
+
     
     //레이블 버튼 등등 디자인
     func setProperties() {
