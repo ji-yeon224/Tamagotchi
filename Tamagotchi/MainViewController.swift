@@ -38,7 +38,6 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(#function, tamaName)
         
         tamaInfo = getTamaInfo()
         tamaName = UserDefaults.standard.string(forKey: "selectedTama") ?? "empty"
@@ -51,12 +50,7 @@ class MainViewController: UIViewController {
        
         
     }
-    
-
-    
-    
     override func viewWillAppear(_ animated: Bool) {
-        print(#function)
         self.addKeyboardNotifications()
         userName = UserDefaults.standard.string(forKey: "userName")!
         title = "\(userName)님의 다마고치"
@@ -250,11 +244,15 @@ extension MainViewController {
     }
     
     @objc func keyboardWillShow(_ noti: NSNotification) {
-        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            self.view.frame.origin.y -= keyboardHeight
+        if view.frame.origin.y >= 0 {
+            if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                let keyboardHeight = keyboardRectangle.height
+                
+                self.view.frame.origin.y -= keyboardHeight
+            }
         }
+        
             
     }
     
@@ -266,6 +264,7 @@ extension MainViewController {
         }
     }
     
+
                                             
     
 }
