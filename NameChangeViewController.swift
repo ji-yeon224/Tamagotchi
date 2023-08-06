@@ -29,6 +29,18 @@ class NameChangeViewController: UIViewController {
 
     }
     
+    @IBAction func returnKeyClicked(_ sender: UITextField) {
+        view.endEditing(true)
+        changeUserName()
+    }
+    
+    @IBAction func tapGestureTapped(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+    }
+    
+    
+    
     //모든 뷰 설정 완료 후
     override func viewDidLayoutSubviews() {
         nameChangeTextField.borderStyle = .none

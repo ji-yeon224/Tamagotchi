@@ -10,25 +10,30 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var state: State = .initial
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
      
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        //UserDefaults.standard.set(false, forKey: "isSelected")
+        //UserDefaults.standard.set(true, forKey: "isInitial") //초기 접속인지
         
-        let isSelected = UserDefaults.standard.bool(forKey: "isSelected")
-        print(isSelected)
+        let isInitial = UserDefaults.standard.bool(forKey: "isInitial")
+        print(isInitial)
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        if isSelected {
-            let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as! MainViewController
-            let nav = UINavigationController(rootViewController: vc)
-            window?.rootViewController = nav
-        } else {
+        if isInitial { //처음접속
+            UserDefaults.standard.set(false, forKey: "isInitial")
             UserDefaults.standard.set("대장", forKey: "userName")
             let vc = sb.instantiateViewController(withIdentifier: SelectViewController.identifier) as! SelectViewController
             window?.rootViewController = vc
+        } else { //데이터 존재
+            let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as! MainViewController
+            let nav = UINavigationController(rootViewController: vc)
+            vc.tamaName = UserDefaults.standard.string(forKey: "selectedTama")!
+            vc.userName = UserDefaults.standard.string(forKey: "userName")!
+            window?.rootViewController = nav
+            
+            
         }
         
         window?.makeKeyAndVisible()

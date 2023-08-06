@@ -32,16 +32,16 @@ class MainViewController: UIViewController {
             UserDefaults.standard.set(try? PropertyListEncoder().encode(tamaInfo), forKey: tamaInfo.name)
         }
     }
-    var userName = UserDefaults.standard.string(forKey: "userName")!
+    var userName = ""
     let messageList = Message()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(#function)
+        print(#function, tamaName)
         
         tamaInfo = getTamaInfo()
-        
+        tamaName = UserDefaults.standard.string(forKey: "selectedTama") ?? "empty"
         title = "\(userName)님의 다마고치"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(showSettingView))
         
@@ -57,12 +57,27 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         print(#function)
+        self.addKeyboardNotifications()
         userName = UserDefaults.standard.string(forKey: "userName")!
         title = "\(userName)님의 다마고치"
         
         changeTamaInfo() //이미지 정보 메세지 변경
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.removeKeyboardNotifications()
+    }
+    
+    @IBAction func tapGestureTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    func getTamaInfo() -> TamagotchiInfo {
+        guard let tamaInfo = UserDefaults.standard.value(forKey: tamaName) as? Data,
+              let data = try? PropertyListDecoder().decode(TamagotchiInfo.self, from: tamaInfo) else {return TamagotchiInfo(name: "", profile: "", imgNum: -1)}
+        print(data)
+        return data
+    }
     
     
     @IBAction func mealButtonClicked(_ sender: UIButton) {
@@ -154,10 +169,9 @@ extension MainViewController {
         
         view.backgroundColor = setBackgroundColor()
         backVIew.backgroundColor = .clear
-        nameLabel.text = tamaInfo?.name
+        nameLabel.text = " \(tamaInfo.name) "
         setNameLabel(label: nameLabel)
         
-        //changeTamaInfo()
         
         tamaImageView.contentMode = .scaleAspectFill
         textImageView.image = UIImage(named: "bubble")
@@ -172,8 +186,8 @@ extension MainViewController {
         messageLabel.numberOfLines = 0
         messageLabel.textColor = .darkGray
         
-        mealTextField.keyboardType = .decimalPad
-        waterTextField.keyboardType = .decimalPad
+        mealTextField.keyboardType = .numberPad
+        waterTextField.keyboardType = .numberPad
         
         
         designButton(button: waterButton, image: "drop.circle", title: "물먹기")
@@ -197,12 +211,7 @@ extension MainViewController {
         waterTextField.layer.addSublayer((border))
     }
     
-    func getTamaInfo() -> TamagotchiInfo {
-        guard let tamaInfo = UserDefaults.standard.value(forKey: tamaName) as? Data,
-              let data = try? PropertyListDecoder().decode(TamagotchiInfo.self, from: tamaInfo) else {return TamagotchiInfo(name: "", profile: "", imgNum: -1)}
-        print(data)
-        return data
-    }
+  
     
     func designButton(button: UIButton, image: String, title: String) {
         
@@ -214,10 +223,7 @@ extension MainViewController {
         config.baseBackgroundColor = .clear
         config.imagePadding = 4
         config.imagePlacement = .leading
-        
-    
         config.titleAlignment = .center
-        
         config.cornerStyle = .capsule
         
         button.configuration = config
@@ -226,4 +232,40 @@ extension MainViewController {
         button.layer.borderWidth = 1
         
     }
+}
+
+//텍스트필드 누를 시 키보드만큼 화면 올라감
+extension MainViewController {
+    
+    func addKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func removeKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    
+    @objc func keyboardWillShow(_ noti: NSNotification) {
+        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            self.view.frame.origin.y -= keyboardHeight
+        }
+            
+    }
+    
+    @objc func keyboardWillHide(_ noti: NSNotification) {
+        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            self.view.frame.origin.y += keyboardHeight
+        }
+    }
+    
+                                            
+    
 }

@@ -24,6 +24,7 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = setBackgroundColor()
         settingTableView.backgroundColor = setBackgroundColor()
         settingTableView.dataSource = self
         settingTableView.delegate = self
@@ -127,7 +128,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         let cancel = UIAlertAction(title: "아니요ㅠ", style: .cancel)
         alert.addAction(ok)
         alert.addAction(cancel)
-        
+        UserDefaults.standard.set(true, forKey: "isInitial")
         present(alert, animated: true)
     }
     
@@ -144,7 +145,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         sceneDelegate?.window?.rootViewController = vc
         sceneDelegate?.window?.makeKeyAndVisible()
         
-        UserDefaults.standard.set(false, forKey: "isSelected")
     }
     
 }

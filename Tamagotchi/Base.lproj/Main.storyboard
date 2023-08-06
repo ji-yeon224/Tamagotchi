@@ -286,6 +286,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5RB-Ma-1Y2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6ck-zC-raS" firstAttribute="top" secondItem="8aE-0x-FcV" secondAttribute="bottom" constant="20" id="4Ue-RS-5ey"/>
                             <constraint firstItem="5RB-Ma-1Y2" firstAttribute="trailing" secondItem="8aE-0x-FcV" secondAttribute="trailing" constant="80" id="DYg-p3-b2X"/>
@@ -302,6 +303,9 @@
                             <constraint firstItem="8aE-0x-FcV" firstAttribute="leading" secondItem="5RB-Ma-1Y2" secondAttribute="leading" constant="80" id="xhh-qx-Dbc"/>
                             <constraint firstItem="8aE-0x-FcV" firstAttribute="top" secondItem="5RB-Ma-1Y2" secondAttribute="top" constant="20" id="yh0-a8-64c"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="36D-Ju-tFu" appends="YES" id="zwN-Mv-9bR"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="backVIew" destination="8aE-0x-FcV" id="9bl-YJ-vkY"/>
@@ -317,6 +321,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rlc-BC-eOR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="36D-Ju-tFu">
+                    <connections>
+                        <action selector="tapGestureTapped:" destination="BKM-o3-V32" id="rzn-f8-DH7"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2883" y="-277"/>
         </scene>
@@ -364,23 +373,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="returnKeyClicked:" destination="dvk-ql-WGM" eventType="editingDidEndOnExit" id="EnT-iY-Y0x"/>
                                     <action selector="textFieldChanged:" destination="dvk-ql-WGM" eventType="valueChanged" id="HUp-1x-CrO"/>
                                 </connections>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9od-p3-DAG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="9od-p3-DAG" firstAttribute="trailing" secondItem="jey-NA-HqN" secondAttribute="trailing" constant="26" id="Fww-Dl-2yb"/>
                             <constraint firstItem="jey-NA-HqN" firstAttribute="top" secondItem="9od-p3-DAG" secondAttribute="top" constant="100" id="JYr-JS-aui"/>
                             <constraint firstItem="jey-NA-HqN" firstAttribute="leading" secondItem="9od-p3-DAG" secondAttribute="leading" constant="26" id="MnM-pi-JEm"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="myc-Jc-4B2" appends="YES" id="DEd-Ka-6v4"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="nameChangeTextField" destination="jey-NA-HqN" id="KDw-mn-Z5D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kcd-i2-Fwh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="myc-Jc-4B2">
+                    <connections>
+                        <action selector="tapGestureTapped:" destination="dvk-ql-WGM" id="SdA-RT-kJ1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4472.5190839694651" y="-100"/>
         </scene>

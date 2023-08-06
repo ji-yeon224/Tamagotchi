@@ -52,6 +52,8 @@ class PopUpViewController: UIViewController {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as! MainViewController
         let nav = UINavigationController(rootViewController: vc)
+        print(tamaInfo.name)
+        UserDefaults.standard.set(tamaInfo.name, forKey: "selectedTama") //내가 선택한 다마고치 이름
         vc.tamaName = tamaInfo.name
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
