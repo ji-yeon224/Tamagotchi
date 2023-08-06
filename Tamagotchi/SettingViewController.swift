@@ -68,7 +68,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             cell.configureCell(img: "moon.fill", title: "다마고치 변경하기", sub: "")
         case .reset:
             cell.configureCell(img: "goforward", title: "데이터 초기화", sub: "")
-            resetData()
+            
             
         }
         
@@ -76,21 +76,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    func resetData() {
-        let tamaList = TamagotchiList().tamagotchi
-        for resetTama in tamaList {
-            UserDefaults.standard.set(try? PropertyListEncoder().encode(resetTama), forKey: resetTama.name)
-        }
-        
-        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        let sceneDelegate = windowScene?.delegate as? SceneDelegate
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: SelectViewController.identifier) as! SelectViewController
-        sceneDelegate?.window?.rootViewController = vc
-        sceneDelegate?.window?.makeKeyAndVisible()
-        
-        UserDefaults.standard.set(false, forKey: "isSelected")
-    }
+    
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -108,8 +94,36 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         case .change:
             print("")
         case .reset:
-            print("")
+            resetAlert()
         }
+    }
+    
+    func resetAlert() {
+        let alert = UIAlertController(title: nil, message: "정말로 초기화 하시겠어요?", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "네!", style: .default) {
+            (action) in self.resetData()
+        }
+        let cancel = UIAlertAction(title: "아니요ㅠ", style: .cancel)
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true)
+    }
+    
+    func resetData() {
+        let tamaList = TamagotchiList().tamagotchi
+        for resetTama in tamaList {
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(resetTama), forKey: resetTama.name)
+        }
+        
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: SelectViewController.identifier) as! SelectViewController
+        sceneDelegate?.window?.rootViewController = vc
+        sceneDelegate?.window?.makeKeyAndVisible()
+        
+        UserDefaults.standard.set(false, forKey: "isSelected")
     }
     
 }
