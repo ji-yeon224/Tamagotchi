@@ -90,12 +90,18 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(identifier: PopUpViewController.identifier) as! PopUpViewController
         
+        
+        
         vc.modalPresentationStyle = .overFullScreen
         if indexPath.row >= tamaList.tamagotchi.count { //준비 셀 클릭 시
             showAlert("아직 준비중입니다!!")
             
         }else { // 다마고치 셀 클릭 시
-            vc.tama = tamaList.tamagotchi[indexPath.row]
+            let tamaInfo = tamaList.tamagotchi[indexPath.row]
+            vc.tamaInfo = tamaInfo
+        
+            
+            
             present(vc, animated: true)
         }
         
