@@ -19,8 +19,10 @@ class PopUpViewController: UIViewController {
     @IBOutlet var profileLabel: UILabel!
     @IBOutlet var selectButton: UIButton!
     @IBOutlet var cancelButton: UIButton!
+    @IBOutlet var lineView: UIView!
     
-    var tama: TamagotchiInfo!
+    var tamaList = TamagotchiList().tamagotchi
+    var tamaInfo: TamagotchiInfo!
     var state: State = .initial
     var tamaEnum = Tamagotchi.allCases
     
@@ -40,15 +42,37 @@ class PopUpViewController: UIViewController {
         
     }
     
-//    @IBAction func selectButtonClicked(_ sender: UIButton) {
-//        print("start")
-//        //UserDefaults 값 설정 후 화면 전환
+    @IBAction func selectButtonClicked(_ sender: UIButton) {
+        print("start")
+        UserDefaults.standard.set("대장", forKey: "userName") //초기화 시에만 설정
+        
+        //구초체 객체 저장
+        //UserDefaults.standard.set(try? PropertyListEncoder().encode(self.tamaInfo), forKey: tamaInfo.name)
+        
+        //UserDefaults.standard.set()
+        //UserDefaults.standard.set(tamaList, forKey: "tamaList")
+        
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(tamaInfo), forKey: tamaInfo.name)
+        
+        UserDefaults.standard.set(true, forKey: "isSelected") //시작 뷰 바꾸기
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as! MainViewController
+        let nav = UINavigationController(rootViewController: vc)
+        
+        vc.tamaName = tamaInfo.name
+        
+        sceneDelegate?.window?.rootViewController = nav
+        sceneDelegate?.window?.makeKeyAndVisible()
+        //UserDefaults 값 설정 후 화면 전환
 //        switch state {
 //        case .initial:
 //            UserDefaults.standard.set(, forKey: <#T##String#>)
-//
-//        //case .change:
-//    }
+
+        //case .change:
+    }
     
 
 }
@@ -62,20 +86,23 @@ extension PopUpViewController {
         backView.layer.backgroundColor = UIColor.black.cgColor
         backView.layer.opacity = 0.1
         
+        lineView.backgroundColor = .lightGray
+        
         popUpMainView.backgroundColor = setBackgroundColor()
         popUpMainView.layer.cornerRadius = 5
         
         configurationButton(btnText: "취소", button: cancelButton)
         configurationButton(btnText: "시작하기", button: selectButton) //변경화면 시 텍스트 변경 설정 필요
         
-        tamaNameLabel.text = tama.name
+        tamaNameLabel.text = tamaInfo.name
         tamaNameLabel.textAlignment = .center
         
-        profileLabel.text = tama.profile
+        profileLabel.text = tamaInfo.profile
         profileLabel.textAlignment = .center
+        
         profileLabel.numberOfLines = 0
         profileLabel.font = .systemFont(ofSize: 13, weight: .light)
-        tamaImageView.image = UIImage(named: "\(tama.imgNum)-6")
+        tamaImageView.image = UIImage(named: "\(tamaInfo.imgNum)-6")
         
         
     }
