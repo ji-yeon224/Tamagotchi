@@ -24,6 +24,8 @@
 		CEC1616C2A7D68C7002BB3C5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1616B2A7D68C7002BB3C5 /* SettingViewController.swift */; };
 		CEC1616F2A7D68F9002BB3C5 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1616D2A7D68F9002BB3C5 /* SettingTableViewCell.swift */; };
 		CEC161702A7D68F9002BB3C5 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC1616E2A7D68F9002BB3C5 /* SettingTableViewCell.xib */; };
+		CEC161722A7D739E002BB3C5 /* NameChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161712A7D739E002BB3C5 /* NameChangeViewController.swift */; };
+		CEC161742A7D7792002BB3C5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161732A7D7792002BB3C5 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		CEC1616B2A7D68C7002BB3C5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		CEC1616D2A7D68F9002BB3C5 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		CEC1616E2A7D68F9002BB3C5 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
+		CEC161712A7D739E002BB3C5 /* NameChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameChangeViewController.swift; sourceTree = SOURCE_ROOT; };
+		CEC161732A7D7792002BB3C5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,10 +82,12 @@
 		CEC161402A7CD114002BB3C5 /* Tamagotchi */ = {
 			isa = PBXGroup;
 			children = (
+				CEC161712A7D739E002BB3C5 /* NameChangeViewController.swift */,
 				CEC161692A7D61DA002BB3C5 /* StateEnum.swift */,
 				CEC161412A7CD114002BB3C5 /* AppDelegate.swift */,
 				CEC161432A7CD114002BB3C5 /* SceneDelegate.swift */,
 				CEC161472A7CD114002BB3C5 /* Main.storyboard */,
+				CEC161732A7D7792002BB3C5 /* MainViewController.swift */,
 				CEC1616D2A7D68F9002BB3C5 /* SettingTableViewCell.swift */,
 				CEC1616E2A7D68F9002BB3C5 /* SettingTableViewCell.xib */,
 				CEC1616B2A7D68C7002BB3C5 /* SettingViewController.swift */,
@@ -180,6 +186,8 @@
 				CEC161622A7D44FD002BB3C5 /* ExtensionDesign.swift in Sources */,
 				CEC1615E2A7CE2D2002BB3C5 /* TamagotchiEnum.swift in Sources */,
 				CEC1616F2A7D68F9002BB3C5 /* SettingTableViewCell.swift in Sources */,
+				CEC161742A7D7792002BB3C5 /* MainViewController.swift in Sources */,
+				CEC161722A7D739E002BB3C5 /* NameChangeViewController.swift in Sources */,
 				CEC161422A7CD114002BB3C5 /* AppDelegate.swift in Sources */,
 				CEC161582A7CDAD1002BB3C5 /* SelectViewController.swift in Sources */,
 				CEC161662A7D51B3002BB3C5 /* TamagotchiList.swift in Sources */,
