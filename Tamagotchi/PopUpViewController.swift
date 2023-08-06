@@ -44,15 +44,14 @@ class PopUpViewController: UIViewController {
     
     @IBAction func selectButtonClicked(_ sender: UIButton) {
         
-        if state.rawValue == "initial"{ //초기
+        if state == .initial { //초기
             UserDefaults.standard.set(try? PropertyListEncoder().encode(tamaInfo), forKey: tamaInfo.name)
-            
+            UserDefaults.standard.set(false, forKey: "isInitial")
         }
         
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: MainViewController.identifier) as! MainViewController
         let nav = UINavigationController(rootViewController: vc)
-        print(tamaInfo.name)
         UserDefaults.standard.set(tamaInfo.name, forKey: "selectedTama") //내가 선택한 다마고치 이름
         vc.tamaName = tamaInfo.name
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
@@ -82,7 +81,12 @@ extension PopUpViewController {
         popUpMainView.layer.cornerRadius = 5
         
         configurationButton(btnText: "취소", button: cancelButton)
-        configurationButton(btnText: "시작하기", button: selectButton) //변경화면 시 텍스트 변경 설정 필요
+        if state == .initial{
+            configurationButton(btnText: "시작하기", button: selectButton) //변경화면 시 텍스트 변경 설정 필요
+        } else {
+            configurationButton(btnText: "변경하기", button: selectButton)
+        }
+       
         
         tamaNameLabel.text = tamaInfo.name
         tamaNameLabel.textAlignment = .center

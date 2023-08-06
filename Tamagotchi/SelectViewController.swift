@@ -21,21 +21,23 @@ class SelectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("select \(state.rawValue)")
         view.backgroundColor = setBackgroundColor()
         collectionView.backgroundColor = setBackgroundColor()
         
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        title = "다마고치 선택하기"
+        if state == .initial{
+            UserDefaults.standard.set("대장", forKey: "userName")
+            title = "다마고치 선택하기"
+        } else if state == .change {
+            title = "다마고치 변경하기"
+        }
+        
         
         let nib = UINib(nibName: SelectCollectionViewCell.identifier, bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: SelectCollectionViewCell.identifier)
         collectionLayout()
-        if state == .initial{
-            UserDefaults.standard.set("대장", forKey: "userName")
-        }
         
         
     }

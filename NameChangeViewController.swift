@@ -11,8 +11,10 @@ class NameChangeViewController: UIViewController {
     
     static let identifier = "NameChangeViewController"
     
-    
+    @IBOutlet var underLineView: UIView!
     @IBOutlet var nameChangeTextField: UITextField!
+    let maxLength = 6
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +23,9 @@ class NameChangeViewController: UIViewController {
         nameChangeTextField.placeholder = "대장님 이름을 알려주세요!"
         
         view.backgroundColor = setBackgroundColor()
-        
+        underLineView.backgroundColor = .darkGray
+        nameChangeTextField.backgroundColor = .clear
+        nameChangeTextField.borderStyle = .none
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(changeUserName))
         navigationController?.navigationBar.tintColor = .darkGray
         
@@ -39,16 +43,7 @@ class NameChangeViewController: UIViewController {
         view.endEditing(true)
     }
     
-    
-    
-    //모든 뷰 설정 완료 후
-    override func viewDidLayoutSubviews() {
-        nameChangeTextField.borderStyle = .none
-        let border = CALayer()
-        border.frame = CGRect(x: 0, y: nameChangeTextField.frame.size.height-1, width: nameChangeTextField.frame.width, height: 1)
-        border.backgroundColor = UIColor.black.cgColor
-        nameChangeTextField.layer.addSublayer((border))
-    }
+ 
     
     @objc func changeUserName() {
         
@@ -69,9 +64,5 @@ class NameChangeViewController: UIViewController {
         
         present(alert, animated: true)
     }
-    
-    
-
-   
 
 }

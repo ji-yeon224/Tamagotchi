@@ -65,9 +65,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier) as! SettingTableViewCell
         cell.backgroundColor = .clear
-        let title = setting[indexPath.row]
         
-        switch title {
+        switch setting[indexPath.row] {
         case .name:
             cell.configureCell(img: "pencil", title: "내 이름 설정하기", sub: UserDefaults.standard.string(forKey: "userName")!)
         case .change:
@@ -86,15 +85,12 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let title = setting[indexPath.row]
-        
+       
         let sb = UIStoryboard(name: "Main", bundle: nil)
         
-        switch title {
+        switch setting[indexPath.row] {
         case .name:
             let vc = sb.instantiateViewController(identifier: NameChangeViewController.identifier) as! NameChangeViewController
-            //let nav = UINavigationController(rootViewController: vc)
-            print("hello")
             navigationController?.pushViewController(vc, animated: true)
             
         case .change:
@@ -104,22 +100,17 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    //다마고치 변경하기
     func changeTamagotchi() {
-        //UserDefaults.standard.set(try? PropertyListEncoder().encode(), forKey: resetTama.name)
         
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(identifier: SelectViewController.identifier) as! SelectViewController
-        
-        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+    
         vc.state = .change
-        let nav = UINavigationController(rootViewController: vc)
-        sceneDelegate?.window?.rootViewController = nav
-        sceneDelegate?.window?.makeKeyAndVisible()
-        
-        //navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
+    //초기화 경고창
     func resetAlert() {
         let alert = UIAlertController(title: nil, message: "정말로 초기화 하시겠어요?", preferredStyle: .alert)
         let ok = UIAlertAction(title: "네!", style: .default) {
@@ -128,10 +119,12 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         let cancel = UIAlertAction(title: "아니요ㅠ", style: .cancel)
         alert.addAction(ok)
         alert.addAction(cancel)
-        UserDefaults.standard.set(true, forKey: "isInitial")
+        
         present(alert, animated: true)
+        
     }
     
+    //데이터 초기화 후 화면 전환
     func resetData() {
         let tamaList = TamagotchiList().tamagotchi
         for resetTama in tamaList {
@@ -140,10 +133,17 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: SelectViewController.identifier) as! SelectViewController
-        sceneDelegate?.window?.rootViewController = vc
+        let vc = sb.instantiateViewController(identifier: SelectViewController.identifier) as! SelectViewController
+        let nav = UINavigationController(rootViewController: vc)
+        
+        vc.state = .initial
+        UserDefaults.standard.set(true, forKey: "isInitial")
+        
+        sceneDelegate?.window?.rootViewController = nav
         sceneDelegate?.window?.makeKeyAndVisible()
+        
         
     }
     

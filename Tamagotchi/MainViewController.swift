@@ -24,11 +24,13 @@ class MainViewController: UIViewController {
     @IBOutlet var waterButton: UIButton!
     @IBOutlet var messageLabel: UILabel!
     
+    @IBOutlet var underLineViews: [UIView]!
+    
+    
     var level = 1
     var tamaName = ""
     var tamaInfo:TamagotchiInfo! {
         didSet{
-            //print(tamaInfo)
             UserDefaults.standard.set(try? PropertyListEncoder().encode(tamaInfo), forKey: tamaInfo.name)
         }
     }
@@ -69,7 +71,7 @@ class MainViewController: UIViewController {
     func getTamaInfo() -> TamagotchiInfo {
         guard let tamaInfo = UserDefaults.standard.value(forKey: tamaName) as? Data,
               let data = try? PropertyListDecoder().decode(TamagotchiInfo.self, from: tamaInfo) else {return TamagotchiInfo(name: "", profile: "", imgNum: -1)}
-        print(data)
+        
         return data
     }
     
@@ -86,6 +88,7 @@ class MainViewController: UIViewController {
             mealTextField.text = ""
             changeTamaInfo()
         }
+        view.endEditing(true)
         
         
         
@@ -103,7 +106,7 @@ class MainViewController: UIViewController {
             waterTextField.text = ""
             changeTamaInfo()
         }
-        
+        view.endEditing(true)
        
 
     }
@@ -137,7 +140,9 @@ extension MainViewController {
         tamaImageView.image = UIImage(named: "\(tamaInfo.imgNum)-\(imgNum)")
         
         var msg = ""
-        if level != tamaInfo.level() {
+        if tamaInfo.meal == 0 && tamaInfo.water == 0 {
+            msg = "반가워요, nickname님!!"
+        } else if level != tamaInfo.level() {
             msg = messageList.levelUPMessage.randomElement()!
         }else if level == 10 {
             msg = messageList.maxMessage.randomElement()!
@@ -181,7 +186,16 @@ extension MainViewController {
         messageLabel.textColor = .darkGray
         
         mealTextField.keyboardType = .numberPad
+        mealTextField.backgroundColor = .clear
+        mealTextField.borderStyle = .none
         waterTextField.keyboardType = .numberPad
+        waterTextField.backgroundColor = .clear
+        waterTextField.borderStyle = .none
+        
+        for v in underLineViews {
+            v.backgroundColor = .darkGray
+            
+        }
         
         
         designButton(button: waterButton, image: "drop.circle", title: "물먹기")
@@ -189,21 +203,7 @@ extension MainViewController {
         
        
     }
-    
-    //모든 뷰 설정 완료 후
-    override func viewDidLayoutSubviews() {
-        mealTextField.borderStyle = .none
-        waterTextField.borderStyle = .none
-        var border = CALayer()
-        border.frame = CGRect(x: 0, y: mealTextField.frame.size.height-1, width: mealTextField.frame.width, height: 1)
-        border.backgroundColor = UIColor.black.cgColor
-        mealTextField.layer.addSublayer((border))
-        
-        border = CALayer()
-        border.frame = CGRect(x: 0, y: waterTextField.frame.size.height-1, width: waterTextField.frame.width, height: 1)
-        border.backgroundColor = UIColor.black.cgColor
-        waterTextField.layer.addSublayer((border))
-    }
+
     
   
     
