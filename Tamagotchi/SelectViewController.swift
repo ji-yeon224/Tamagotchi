@@ -60,13 +60,6 @@ class SelectViewController: UIViewController {
 
 }
 
-extension SelectViewController {
-    
-    
-    
-    
-    
-}
 
 //collectionView
 extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSource {

@@ -117,7 +117,6 @@ class MainViewController: UIViewController {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(identifier: SettingViewController.identifier) as! SettingViewController
         
-       // vc.tamaList = tamaInfo
         navigationController?.pushViewController(vc, animated: true)
         
     }

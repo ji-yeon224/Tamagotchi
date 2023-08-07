@@ -73,7 +73,6 @@ extension PopUpViewController {
     func setDesignView() {
         view.backgroundColor = .clear
         backView.layer.backgroundColor = UIColor.black.cgColor
-        
         backView.layer.opacity = 0.1
         
         lineView.backgroundColor = setFontColor()
@@ -91,7 +90,7 @@ extension PopUpViewController {
        
         
         tamaNameLabel.text = tamaInfo.name
-        tamaNameLabel.textAlignment = .center
+        setNameLabel(label: tamaNameLabel)
         
         profileLabel.text = tamaInfo.profile
         profileLabel.textAlignment = .center

@@ -20,7 +20,9 @@ class SettingViewController: UIViewController {
     
     @IBOutlet var settingTableView: UITableView!
     
+    let sb = UIStoryboard(name: "Main", bundle: nil)
     let setting = Setting.allCases
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,8 +49,6 @@ class SettingViewController: UIViewController {
         cell.subLabel.text = UserDefaults.standard.string(forKey: "userName")
         settingTableView.reloadData()
     }
-    
-    
     
 
     
@@ -85,8 +85,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
-        let sb = UIStoryboard(name: "Main", bundle: nil)
         
         switch setting[indexPath.row] {
         case .name:
@@ -103,7 +101,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     //다마고치 변경하기
     func changeTamagotchi() {
         
-        let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(identifier: SelectViewController.identifier) as! SelectViewController
     
         vc.state = .change
@@ -134,7 +131,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
         
-        let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(identifier: SelectViewController.identifier) as! SelectViewController
         let nav = UINavigationController(rootViewController: vc)
         

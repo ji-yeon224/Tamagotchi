@@ -24,7 +24,7 @@ extension UIViewController {
     //다마고치 이름 레이블 공통 디자인
     func setNameLabel(label: UILabel) {
         label.font = .systemFont(ofSize: 13, weight: .light)
-        label.textColor = .darkGray
+        label.textColor = setFontColor()
         label.textAlignment = .center
         label.layer.borderWidth = 1
         label.layer.borderColor = setFontColor().cgColor

@@ -18,6 +18,7 @@ class SelectCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         nameLabel.font = .systemFont(ofSize: 13, weight: .light)
         nameLabel.textColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
         nameLabel.textAlignment = .center
