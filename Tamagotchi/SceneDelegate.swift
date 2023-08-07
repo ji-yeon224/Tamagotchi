@@ -10,19 +10,19 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var isInitial = true
+    var isLaunched = false
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
      
         guard let _ = (scene as? UIWindowScene) else { return }
      
         
+        //UserDefaults.standard.set(false, forKey: "isLaunched")
         
-        
-        isInitial = UserDefaults.standard.bool(forKey: "isInitial")
+        isLaunched = UserDefaults.standard.bool(forKey: "isLaunched")
         
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        if isInitial { //처음접속
+        if !isLaunched { //처음접속
             
             UserDefaults.standard.set("대장", forKey: "userName")
             let vc = sb.instantiateViewController(withIdentifier: SelectViewController.identifier) as! SelectViewController

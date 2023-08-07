@@ -45,8 +45,15 @@ class PopUpViewController: UIViewController {
     @IBAction func selectButtonClicked(_ sender: UIButton) {
         
         if state == .initial { //초기
+            
+            //다마고치 셋팅 초기화
+            let tamaList = TamagotchiList().tamagotchi
+            for resetTama in tamaList {
+                UserDefaults.standard.set(try? PropertyListEncoder().encode(resetTama), forKey: resetTama.name)
+            }
+            
             UserDefaults.standard.set(try? PropertyListEncoder().encode(tamaInfo), forKey: tamaInfo.name)
-            UserDefaults.standard.set(false, forKey: "isInitial")
+            UserDefaults.standard.set(true, forKey: "isLaunched")
         }
         
         let sb = UIStoryboard(name: "Main", bundle: nil)

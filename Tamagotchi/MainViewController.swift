@@ -32,6 +32,7 @@ class MainViewController: UIViewController {
     var tamaInfo:TamagotchiInfo! {
         didSet{
             UserDefaults.standard.set(try? PropertyListEncoder().encode(tamaInfo), forKey: tamaInfo.name)
+            print(tamaInfo)
         }
     }
     var userName = ""

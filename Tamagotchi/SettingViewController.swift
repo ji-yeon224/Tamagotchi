@@ -121,12 +121,9 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    //데이터 초기화 후 화면 전환
+    //리셋 화면 전환
     func resetData() {
-        let tamaList = TamagotchiList().tamagotchi
-        for resetTama in tamaList {
-            UserDefaults.standard.set(try? PropertyListEncoder().encode(resetTama), forKey: resetTama.name)
-        }
+
         
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
@@ -135,7 +132,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         let nav = UINavigationController(rootViewController: vc)
         
         vc.state = .initial
-        UserDefaults.standard.set(true, forKey: "isInitial")
+        UserDefaults.standard.set(false, forKey: "isLaunched")
         
         sceneDelegate?.window?.rootViewController = nav
         sceneDelegate?.window?.makeKeyAndVisible()
