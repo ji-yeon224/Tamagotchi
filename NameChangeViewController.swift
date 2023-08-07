@@ -47,11 +47,22 @@ class NameChangeViewController: UIViewController {
     
     @objc func changeUserName() {
         
+        guard let text = nameChangeTextField.text else {
+            showAlert("이름을 입력해주세요!")
+            return
+        }
+      
+        //앞 뒤 공백 제거
+        let removeWhiteSpace = text.trimmingCharacters(in: .whitespaces)
         
-        if nameChangeTextField.text == nil || nameChangeTextField.text!.count < 2 || nameChangeTextField.text!.count > 6 {
+        if removeWhiteSpace.count == 0 {
+            showAlert("이름을 입력해주세요!")
+            return
+        }
+        if removeWhiteSpace.count < 2 || removeWhiteSpace.count > 6 {
             showAlert("2글자 이상 6글자 이하로 작성해주세요!")
         } else {
-            UserDefaults.standard.set(nameChangeTextField.text, forKey: "userName")
+            UserDefaults.standard.set(removeWhiteSpace, forKey: "userName")
             navigationController?.popViewController(animated: true)
         }
         
