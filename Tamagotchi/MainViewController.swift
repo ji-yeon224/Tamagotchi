@@ -167,7 +167,7 @@ extension MainViewController {
     func setProperties() {
         
         view.backgroundColor = setBackgroundColor()
-        backVIew.backgroundColor = .clear
+        backVIew.backgroundColor = setBackgroundColor()
         nameLabel.text = " \(tamaInfo.name) "
         setNameLabel(label: nameLabel)
         
@@ -179,21 +179,27 @@ extension MainViewController {
         infoLabel.textColor = .darkGray
         infoLabel.font = .systemFont(ofSize: 13)
         infoLabel.textAlignment = .center
+        infoLabel.textColor = setFontColor()
         
         messageLabel.font = .systemFont(ofSize: 13)
         messageLabel.textAlignment = .center
         messageLabel.numberOfLines = 0
-        messageLabel.textColor = .darkGray
+        messageLabel.textColor = setFontColor()
         
         mealTextField.keyboardType = .numberPad
         mealTextField.backgroundColor = .clear
         mealTextField.borderStyle = .none
+        mealTextField.placeholder = "밥주세용"
+        mealTextField.textAlignment = .center
+        
         waterTextField.keyboardType = .numberPad
         waterTextField.backgroundColor = .clear
         waterTextField.borderStyle = .none
+        waterTextField.placeholder = "물주세용"
+        waterTextField.textAlignment = .center
         
         for v in underLineViews {
-            v.backgroundColor = .darkGray
+            v.backgroundColor = setFontColor()
             
         }
         
@@ -213,8 +219,8 @@ extension MainViewController {
         config.title = title
         config.image = UIImage(systemName: image)
         config.buttonSize = .small
-        config.baseForegroundColor = .darkGray
-        config.baseBackgroundColor = .clear
+        config.baseForegroundColor = setFontColor()
+        config.baseBackgroundColor = setBackgroundColor()
         config.imagePadding = 4
         config.imagePlacement = .leading
         config.titleAlignment = .center
@@ -222,7 +228,7 @@ extension MainViewController {
         
         button.configuration = config
         button.layer.cornerRadius = 10
-        button.layer.borderColor = UIColor.darkGray.cgColor
+        button.layer.borderColor = setFontColor().cgColor
         button.layer.borderWidth = 1
         
     }

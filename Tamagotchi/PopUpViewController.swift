@@ -73,12 +73,14 @@ extension PopUpViewController {
     func setDesignView() {
         view.backgroundColor = .clear
         backView.layer.backgroundColor = UIColor.black.cgColor
+        
         backView.layer.opacity = 0.1
         
-        lineView.backgroundColor = .lightGray
+        lineView.backgroundColor = setFontColor()
         
         popUpMainView.backgroundColor = setBackgroundColor()
-        popUpMainView.layer.cornerRadius = 5
+        popUpMainView.layer.cornerRadius = 20
+        
         
         configurationButton(btnText: "취소", button: cancelButton)
         if state == .initial{
@@ -93,9 +95,11 @@ extension PopUpViewController {
         
         profileLabel.text = tamaInfo.profile
         profileLabel.textAlignment = .center
-        
         profileLabel.numberOfLines = 0
         profileLabel.font = .systemFont(ofSize: 13, weight: .light)
+        profileLabel.textColor = setFontColor()
+        
+        
         tamaImageView.image = UIImage(named: "\(tamaInfo.imgNum)-6")
         
         
@@ -103,16 +107,25 @@ extension PopUpViewController {
     
     func configurationButton(btnText: String, button: UIButton) {
         
-        var config = UIButton.Configuration.plain()
+        var config = UIButton.Configuration.gray()
         config.title = btnText
-        config.baseForegroundColor = .darkGray
-        config.baseBackgroundColor = setBackgroundColor()
+        config.baseForegroundColor = setFontColor()
         config.titleAlignment = .center
         
+        button.layer.cornerRadius = 20
+        button.layer.masksToBounds = true
+        if btnText == "취소"{
+            button.layer.maskedCorners = .layerMinXMaxYCorner
+        } else{
+            button.layer.maskedCorners = .layerMaxXMaxYCorner
+            config.baseBackgroundColor = setBackgroundColor()
+        }
+        
         button.configuration = config
-        button.layer.borderColor = UIColor.lightGray.cgColor
-        button.layer.borderWidth = 1
         
     }
+    
+    
+    
     
 }

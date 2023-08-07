@@ -44,7 +44,7 @@ class SelectViewController: UIViewController {
     
     func collectionLayout() {
         let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 17
+        let spacing: CGFloat = 15
         let width = UIScreen.main.bounds.width - (spacing * 4)
         
         layout.itemSize = CGSize(width: width / 3, height: width / 2)

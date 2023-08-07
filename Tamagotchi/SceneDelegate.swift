@@ -16,7 +16,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
      
         guard let _ = (scene as? UIWindowScene) else { return }
      
-        UserDefaults.standard.set(true, forKey: "isInitial")
         
         
         

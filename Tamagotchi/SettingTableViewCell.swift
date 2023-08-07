@@ -23,7 +23,7 @@ class SettingTableViewCell: UITableViewCell {
         subLabel.textColor = .lightGray
         
         imgLabel.image = UIImage(systemName: img)
-        imgLabel.tintColor = .black
+        imgLabel.tintColor = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
         titleLabel.text = title
         subLabel.text = sub
         
