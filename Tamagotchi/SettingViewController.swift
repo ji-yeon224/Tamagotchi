@@ -123,7 +123,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     //리셋 화면 전환
     func resetData() {
-
         
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate

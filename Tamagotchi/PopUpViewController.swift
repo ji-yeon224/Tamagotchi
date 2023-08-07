@@ -52,7 +52,6 @@ class PopUpViewController: UIViewController {
                 UserDefaults.standard.set(try? PropertyListEncoder().encode(resetTama), forKey: resetTama.name)
             }
             
-            UserDefaults.standard.set(try? PropertyListEncoder().encode(tamaInfo), forKey: tamaInfo.name)
             UserDefaults.standard.set(true, forKey: "isLaunched")
         }
         
