@@ -9,21 +9,49 @@
 /* Begin PBXBuildFile section */
 		CEC161422A7CD114002BB3C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161412A7CD114002BB3C5 /* AppDelegate.swift */; };
 		CEC161442A7CD114002BB3C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161432A7CD114002BB3C5 /* SceneDelegate.swift */; };
-		CEC161462A7CD114002BB3C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161452A7CD114002BB3C5 /* ViewController.swift */; };
 		CEC161492A7CD114002BB3C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC161472A7CD114002BB3C5 /* Main.storyboard */; };
 		CEC1614B2A7CD115002BB3C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC1614A2A7CD115002BB3C5 /* Assets.xcassets */; };
 		CEC1614E2A7CD115002BB3C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC1614C2A7CD115002BB3C5 /* LaunchScreen.storyboard */; };
+		CEC161582A7CDAD1002BB3C5 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161572A7CDAD1002BB3C5 /* SelectViewController.swift */; };
+		CEC1615B2A7CDB96002BB3C5 /* SelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161592A7CDB96002BB3C5 /* SelectCollectionViewCell.swift */; };
+		CEC1615C2A7CDB96002BB3C5 /* SelectCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC1615A2A7CDB96002BB3C5 /* SelectCollectionViewCell.xib */; };
+		CEC1615E2A7CE2D2002BB3C5 /* TamagotchiEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1615D2A7CE2D2002BB3C5 /* TamagotchiEnum.swift */; };
+		CEC161602A7D3349002BB3C5 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1615F2A7D3349002BB3C5 /* PopUpViewController.swift */; };
+		CEC161622A7D44FD002BB3C5 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161612A7D44FD002BB3C5 /* Extension.swift */; };
+		CEC161662A7D51B3002BB3C5 /* TamagotchiList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161652A7D51B3002BB3C5 /* TamagotchiList.swift */; };
+		CEC161682A7D55E5002BB3C5 /* TamagotchiInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161672A7D55E5002BB3C5 /* TamagotchiInfo.swift */; };
+		CEC1616A2A7D61DA002BB3C5 /* StateEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161692A7D61DA002BB3C5 /* StateEnum.swift */; };
+		CEC1616C2A7D68C7002BB3C5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1616B2A7D68C7002BB3C5 /* SettingViewController.swift */; };
+		CEC1616F2A7D68F9002BB3C5 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1616D2A7D68F9002BB3C5 /* SettingTableViewCell.swift */; };
+		CEC161702A7D68F9002BB3C5 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC1616E2A7D68F9002BB3C5 /* SettingTableViewCell.xib */; };
+		CEC161722A7D739E002BB3C5 /* NameChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161712A7D739E002BB3C5 /* NameChangeViewController.swift */; };
+		CEC161742A7D7792002BB3C5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161732A7D7792002BB3C5 /* MainViewController.swift */; };
+		CEC161782A7F82E2002BB3C5 /* MessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161772A7F82E2002BB3C5 /* MessageList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CEC1613E2A7CD114002BB3C5 /* Tamagotchi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagotchi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC161412A7CD114002BB3C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEC161432A7CD114002BB3C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CEC161452A7CD114002BB3C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CEC161482A7CD114002BB3C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEC1614A2A7CD115002BB3C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEC1614D2A7CD115002BB3C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEC1614F2A7CD115002BB3C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEC161572A7CDAD1002BB3C5 /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
+		CEC161592A7CDB96002BB3C5 /* SelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionViewCell.swift; sourceTree = "<group>"; };
+		CEC1615A2A7CDB96002BB3C5 /* SelectCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectCollectionViewCell.xib; sourceTree = "<group>"; };
+		CEC1615D2A7CE2D2002BB3C5 /* TamagotchiEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiEnum.swift; sourceTree = "<group>"; };
+		CEC1615F2A7D3349002BB3C5 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		CEC161612A7D44FD002BB3C5 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		CEC161652A7D51B3002BB3C5 /* TamagotchiList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiList.swift; sourceTree = "<group>"; };
+		CEC161672A7D55E5002BB3C5 /* TamagotchiInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiInfo.swift; sourceTree = "<group>"; };
+		CEC161692A7D61DA002BB3C5 /* StateEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateEnum.swift; sourceTree = SOURCE_ROOT; };
+		CEC1616B2A7D68C7002BB3C5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		CEC1616D2A7D68F9002BB3C5 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		CEC1616E2A7D68F9002BB3C5 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
+		CEC161712A7D739E002BB3C5 /* NameChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameChangeViewController.swift; sourceTree = SOURCE_ROOT; };
+		CEC161732A7D7792002BB3C5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CEC161772A7F82E2002BB3C5 /* MessageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +84,27 @@
 		CEC161402A7CD114002BB3C5 /* Tamagotchi */ = {
 			isa = PBXGroup;
 			children = (
+				CEC161712A7D739E002BB3C5 /* NameChangeViewController.swift */,
+				CEC161692A7D61DA002BB3C5 /* StateEnum.swift */,
 				CEC161412A7CD114002BB3C5 /* AppDelegate.swift */,
 				CEC161432A7CD114002BB3C5 /* SceneDelegate.swift */,
-				CEC161452A7CD114002BB3C5 /* ViewController.swift */,
 				CEC161472A7CD114002BB3C5 /* Main.storyboard */,
+				CEC161732A7D7792002BB3C5 /* MainViewController.swift */,
+				CEC161772A7F82E2002BB3C5 /* MessageList.swift */,
+				CEC1616D2A7D68F9002BB3C5 /* SettingTableViewCell.swift */,
+				CEC1616E2A7D68F9002BB3C5 /* SettingTableViewCell.xib */,
+				CEC1616B2A7D68C7002BB3C5 /* SettingViewController.swift */,
+				CEC1615F2A7D3349002BB3C5 /* PopUpViewController.swift */,
+				CEC161612A7D44FD002BB3C5 /* Extension.swift */,
+				CEC161592A7CDB96002BB3C5 /* SelectCollectionViewCell.swift */,
+				CEC1615A2A7CDB96002BB3C5 /* SelectCollectionViewCell.xib */,
+				CEC161572A7CDAD1002BB3C5 /* SelectViewController.swift */,
+				CEC1615D2A7CE2D2002BB3C5 /* TamagotchiEnum.swift */,
 				CEC1614A2A7CD115002BB3C5 /* Assets.xcassets */,
 				CEC1614C2A7CD115002BB3C5 /* LaunchScreen.storyboard */,
 				CEC1614F2A7CD115002BB3C5 /* Info.plist */,
+				CEC161652A7D51B3002BB3C5 /* TamagotchiList.swift */,
+				CEC161672A7D55E5002BB3C5 /* TamagotchiInfo.swift */,
 			);
 			path = Tamagotchi;
 			sourceTree = "<group>";
@@ -125,8 +167,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEC1615C2A7CDB96002BB3C5 /* SelectCollectionViewCell.xib in Resources */,
 				CEC1614E2A7CD115002BB3C5 /* LaunchScreen.storyboard in Resources */,
 				CEC1614B2A7CD115002BB3C5 /* Assets.xcassets in Resources */,
+				CEC161702A7D68F9002BB3C5 /* SettingTableViewCell.xib in Resources */,
 				CEC161492A7CD114002BB3C5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,8 +182,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEC161462A7CD114002BB3C5 /* ViewController.swift in Sources */,
+				CEC1615B2A7CDB96002BB3C5 /* SelectCollectionViewCell.swift in Sources */,
+				CEC1616C2A7D68C7002BB3C5 /* SettingViewController.swift in Sources */,
+				CEC161602A7D3349002BB3C5 /* PopUpViewController.swift in Sources */,
+				CEC1616A2A7D61DA002BB3C5 /* StateEnum.swift in Sources */,
+				CEC161622A7D44FD002BB3C5 /* Extension.swift in Sources */,
+				CEC161782A7F82E2002BB3C5 /* MessageList.swift in Sources */,
+				CEC1615E2A7CE2D2002BB3C5 /* TamagotchiEnum.swift in Sources */,
+				CEC1616F2A7D68F9002BB3C5 /* SettingTableViewCell.swift in Sources */,
+				CEC161742A7D7792002BB3C5 /* MainViewController.swift in Sources */,
+				CEC161722A7D739E002BB3C5 /* NameChangeViewController.swift in Sources */,
 				CEC161422A7CD114002BB3C5 /* AppDelegate.swift in Sources */,
+				CEC161582A7CDAD1002BB3C5 /* SelectViewController.swift in Sources */,
+				CEC161662A7D51B3002BB3C5 /* TamagotchiList.swift in Sources */,
+				CEC161682A7D55E5002BB3C5 /* TamagotchiInfo.swift in Sources */,
 				CEC161442A7CD114002BB3C5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,8 +349,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +359,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiyeon.Tamagotchi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -321,8 +381,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +391,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiyeon.Tamagotchi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

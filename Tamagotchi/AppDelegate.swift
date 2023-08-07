@@ -14,6 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //UIView.appearance().backgroundColor = UIColor(red: 237 / 255, green: 252 / 255, blue: 255 / 255, alpha: 1)
+        //UILabel.appearance().backgroundColor = UIColor(red: 232 / 255, green: 251 / 255, blue: 252 / 255, alpha: 1)
+        //UILabel.appearance().backgroundColor = UIColor(red: 224, green: 222, blue: 250, alpha: 1)
         return true
     }
 
