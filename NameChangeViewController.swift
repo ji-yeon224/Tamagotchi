@@ -51,21 +51,41 @@ class NameChangeViewController: UIViewController {
             showAlert("이름을 입력해주세요!")
             return
         }
+        
       
         //앞 뒤 공백 제거
-        let removeWhiteSpace = text.trimmingCharacters(in: .whitespaces)
-        
-        if removeWhiteSpace.count == 0 {
-            showAlert("이름을 입력해주세요!")
+        let removeWhiteSpaceText = text.trimmingCharacters(in: .whitespaces)
+        do {
+            let result = try validateNicknameInput(text: removeWhiteSpaceText)
+        } catch {
+            print("error")
             return
         }
-        if removeWhiteSpace.count < 2 || removeWhiteSpace.count > 6 {
-            showAlert("2글자 이상 6글자 이하로 작성해주세요!")
-        } else {
-            UserDefaults.standard.set(removeWhiteSpace, forKey: "userName")
-            navigationController?.popViewController(animated: true)
+        
+        UserDefaults.standard.set(removeWhiteSpaceText, forKey: "userName")
+        navigationController?.popViewController(animated: true)
+        
+        
+    }
+    
+    func validateNicknameInput(text: String) throws -> Bool {
+        
+        guard !(text.isEmpty) else {
+            showAlert("이름을 입력해주세요!")
+            throw ValidationError.emptyInput
         }
         
+        guard text.count >= 2 else {
+            showAlert("2글자 이상 6글자 이하로 작성해주세요!")
+            throw ValidationError.isMinInput
+        }
+        
+        guard text.count <= 6 else {
+            showAlert("2글자 이상 6글자 이하로 작성해주세요!")
+            throw ValidationError.isMaxInput
+        }
+        
+        return true
     }
     
     func showAlert(_ message: String) {

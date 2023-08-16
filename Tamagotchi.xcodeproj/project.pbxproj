@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE5C9EB62A8D2F840011664D /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C9EB52A8D2F840011664D /* Error.swift */; };
 		CEC161422A7CD114002BB3C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161412A7CD114002BB3C5 /* AppDelegate.swift */; };
 		CEC161442A7CD114002BB3C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161432A7CD114002BB3C5 /* SceneDelegate.swift */; };
 		CEC161492A7CD114002BB3C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC161472A7CD114002BB3C5 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE5C9EB52A8D2F840011664D /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		CEC1613E2A7CD114002BB3C5 /* Tamagotchi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagotchi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC161412A7CD114002BB3C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEC161432A7CD114002BB3C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				CEC161432A7CD114002BB3C5 /* SceneDelegate.swift */,
 				CEC161472A7CD114002BB3C5 /* Main.storyboard */,
 				CEC161732A7D7792002BB3C5 /* MainViewController.swift */,
+				CE5C9EB52A8D2F840011664D /* Error.swift */,
 				CEC161772A7F82E2002BB3C5 /* MessageList.swift */,
 				CEC1616D2A7D68F9002BB3C5 /* SettingTableViewCell.swift */,
 				CEC1616E2A7D68F9002BB3C5 /* SettingTableViewCell.xib */,
@@ -182,6 +185,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE5C9EB62A8D2F840011664D /* Error.swift in Sources */,
 				CEC1615B2A7CDB96002BB3C5 /* SelectCollectionViewCell.swift in Sources */,
 				CEC1616C2A7D68C7002BB3C5 /* SettingViewController.swift in Sources */,
 				CEC161602A7D3349002BB3C5 /* PopUpViewController.swift in Sources */,
@@ -346,6 +350,7 @@
 				DEVELOPMENT_TEAM = DJP8DYB9HG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tamagotchi/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "김지연";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -378,6 +383,7 @@
 				DEVELOPMENT_TEAM = DJP8DYB9HG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tamagotchi/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "김지연";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

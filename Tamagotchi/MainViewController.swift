@@ -7,9 +7,15 @@
 
 import UIKit
 
+struct Limit {
+    static let maximumOnetimeWater = 50
+    static let maximumOnetimeMeal = 100
+}
+
 class MainViewController: UIViewController {
     
     static let identifier = "MainViewController"
+    
     
     
     @IBOutlet var textImageView: UIImageView!
@@ -78,11 +84,15 @@ class MainViewController: UIViewController {
     
     @IBAction func mealButtonClicked(_ sender: UIButton) {
         
+        do {
+            let result = try validateUserInputError(num: mealTextField.text ?? "0", max: Limit.maximumOnetimeMeal)
+        } catch{
+            return
+        }
+        
         if mealTextField.text!.count == 0 {
             tamaInfo.meal += 1
             changeTamaInfo()
-        } else if Int(mealTextField.text!) ?? 0 > 99 { //한 번에 먹을 수 있는 최대치 초과
-            changeMessage(messageList.overEatMessage.randomElement()!)
         } else {
             tamaInfo.meal += Int(mealTextField.text!) ?? 0
             mealTextField.text = ""
@@ -96,11 +106,15 @@ class MainViewController: UIViewController {
     
     @IBAction func waterButtonClicked(_ sender: UIButton) {
         
+        do {
+            let result = try validateUserInputError(num: waterTextField.text ?? "0", max: Limit.maximumOnetimeWater)
+        } catch{
+            return
+        }
+        
         if waterTextField.text!.count == 0 {
             tamaInfo.water += 1
             changeTamaInfo()
-        } else if Int(waterTextField!.text!) ?? 0 > 49 { //한 번에 먹을 수 있는 최대치 초과
-            changeMessage(messageList.overEatMessage.randomElement()!)
         } else {
             tamaInfo.water += Int(waterTextField!.text!) ?? 0
             waterTextField.text = ""
@@ -109,6 +123,20 @@ class MainViewController: UIViewController {
         view.endEditing(true)
        
 
+    }
+    
+    func validateUserInputError(num: String, max: Int) throws -> Bool {
+        guard Int(num) != nil else {
+            throw ValidationError.isNotInt
+        }
+        
+        guard Int(num)! < max else {
+            changeMessage(messageList.overEatMessage.randomElement()!)
+            throw ValidationError.isMaxInput
+        }
+        
+        return true
+        
     }
 
     
