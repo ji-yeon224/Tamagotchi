@@ -13,7 +13,7 @@ enum Setting: CaseIterable {
 
 class SettingViewController: UIViewController {
     
-    static let identifier = "SettingViewController"
+    //static let identifier = "SettingViewController"
     
     var tamaList:[Tamagotchi] = []
     

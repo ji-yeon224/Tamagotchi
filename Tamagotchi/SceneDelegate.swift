@@ -16,9 +16,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
      
         guard let _ = (scene as? UIWindowScene) else { return }
      
-        
-        //UserDefaults.standard.set(false, forKey: "isLaunched")
-        
         isLaunched = UserDefaults.standard.bool(forKey: "isLaunched")
         
         let sb = UIStoryboard(name: "Main", bundle: nil)

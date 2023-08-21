@@ -14,8 +14,6 @@ struct Limit {
 
 class MainViewController: UIViewController {
     
-    static let identifier = "MainViewController"
-    
     
     
     @IBOutlet var textImageView: UIImageView!

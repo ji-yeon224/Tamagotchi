@@ -9,8 +9,6 @@ import UIKit
 
 class PopUpViewController: UIViewController {
     
-    static let identifier = "PopUpViewController"
-    
     
     @IBOutlet var backView: UIView!
     @IBOutlet var popUpMainView: UIView!

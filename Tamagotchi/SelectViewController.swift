@@ -9,7 +9,6 @@ import UIKit
 
 class SelectViewController: UIViewController {
     
-    static let identifier = "SelectViewController"
 
     @IBOutlet var collectionView: UICollectionView!
     

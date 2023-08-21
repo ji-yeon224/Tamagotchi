@@ -9,7 +9,7 @@ import UIKit
 
 class NameChangeViewController: UIViewController {
     
-    static let identifier = "NameChangeViewController"
+    //static let identifier = "NameChangeViewController"
     
     @IBOutlet var underLineView: UIView!
     @IBOutlet var nameChangeTextField: UITextField!

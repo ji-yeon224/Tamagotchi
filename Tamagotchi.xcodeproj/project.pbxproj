@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE5C9EB62A8D2F840011664D /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C9EB52A8D2F840011664D /* Error.swift */; };
 		CE80A6332A934495005689A7 /* EatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE80A6322A934495005689A7 /* EatButton.swift */; };
+		CE80A6352A9354EF005689A7 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE80A6342A9354EF005689A7 /* ReusableProtocol.swift */; };
 		CEC161422A7CD114002BB3C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161412A7CD114002BB3C5 /* AppDelegate.swift */; };
 		CEC161442A7CD114002BB3C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC161432A7CD114002BB3C5 /* SceneDelegate.swift */; };
 		CEC161492A7CD114002BB3C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC161472A7CD114002BB3C5 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		CE5C9EB52A8D2F840011664D /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		CE80A6322A934495005689A7 /* EatButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatButton.swift; sourceTree = "<group>"; };
+		CE80A6342A9354EF005689A7 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		CEC1613E2A7CD114002BB3C5 /* Tamagotchi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagotchi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC161412A7CD114002BB3C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEC161432A7CD114002BB3C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				CEC161652A7D51B3002BB3C5 /* TamagotchiList.swift */,
 				CEC161672A7D55E5002BB3C5 /* TamagotchiInfo.swift */,
 				CE80A6322A934495005689A7 /* EatButton.swift */,
+				CE80A6342A9354EF005689A7 /* ReusableProtocol.swift */,
 			);
 			path = Tamagotchi;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				CEC161622A7D44FD002BB3C5 /* Extension.swift in Sources */,
 				CEC161782A7F82E2002BB3C5 /* MessageList.swift in Sources */,
 				CEC1615E2A7CE2D2002BB3C5 /* TamagotchiEnum.swift in Sources */,
+				CE80A6352A9354EF005689A7 /* ReusableProtocol.swift in Sources */,
 				CE80A6332A934495005689A7 /* EatButton.swift in Sources */,
 				CEC1616F2A7D68F9002BB3C5 /* SettingTableViewCell.swift in Sources */,
 				CEC161742A7D7792002BB3C5 /* MainViewController.swift in Sources */,
