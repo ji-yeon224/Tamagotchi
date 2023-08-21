@@ -241,24 +241,22 @@ extension MainViewController {
   
     
     func designButton(button: UIButton, image: String, title: String) {
-        
-        var config = UIButton.Configuration.filled()
+
+        var config = UIButton.Configuration.plain()
         config.title = title
         config.image = UIImage(systemName: image)
-        config.buttonSize = .small
         config.baseForegroundColor = setFontColor()
-        config.baseBackgroundColor = setBackgroundColor()
+        config.buttonSize = .small
         config.imagePadding = 4
         config.imagePlacement = .leading
         config.titleAlignment = .center
         config.cornerStyle = .capsule
-        
+
         button.configuration = config
-        button.layer.cornerRadius = 10
-        button.layer.borderColor = setFontColor().cgColor
-        button.layer.borderWidth = 1
-        
+
     }
+    
+    
 }
 
 //텍스트필드 누를 시 키보드만큼 화면 올라감
