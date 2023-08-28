@@ -238,7 +238,7 @@
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZa-Iv-sZV">
-                                        <rect key="frame" x="70" y="344.66666666666669" width="93" height="24.666666666666686"/>
+                                        <rect key="frame" x="60" y="344.66666666666669" width="113" height="24.666666666666686"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -253,7 +253,8 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dd0-4O-iNv" secondAttribute="trailing" id="7bS-70-CXu"/>
-                                    <constraint firstItem="QZa-Iv-sZV" firstAttribute="leading" relation="lessThanOrEqual" secondItem="8aE-0x-FcV" secondAttribute="leading" constant="70" id="EiB-ee-4NE"/>
+                                    <constraint firstItem="QZa-Iv-sZV" firstAttribute="leading" relation="lessThanOrEqual" secondItem="8aE-0x-FcV" secondAttribute="leading" constant="60" id="Mgt-9C-w5N"/>
+                                    <constraint firstItem="QZa-Iv-sZV" firstAttribute="centerX" secondItem="8aE-0x-FcV" secondAttribute="centerX" id="Ngq-jW-aM1"/>
                                     <constraint firstItem="QZa-Iv-sZV" firstAttribute="top" secondItem="Xtz-f3-bd8" secondAttribute="bottom" constant="10" id="WN7-Xd-IKZ"/>
                                     <constraint firstItem="dd0-4O-iNv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8aE-0x-FcV" secondAttribute="leading" id="XHh-g4-p0K"/>
                                     <constraint firstAttribute="bottom" secondItem="utG-rW-W36" secondAttribute="bottom" constant="12" id="XbC-q1-85u"/>
@@ -265,8 +266,8 @@
                                     <constraint firstItem="Xtz-f3-bd8" firstAttribute="top" secondItem="8aE-0x-FcV" secondAttribute="top" constant="10" id="kPM-0u-2hK"/>
                                     <constraint firstItem="Xtz-f3-bd8" firstAttribute="leading" secondItem="8aE-0x-FcV" secondAttribute="leading" constant="10" id="kn6-ng-9xO"/>
                                     <constraint firstItem="dd0-4O-iNv" firstAttribute="centerY" secondItem="xay-qJ-k6F" secondAttribute="centerY" id="kzl-2H-EAi"/>
+                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="QZa-Iv-sZV" secondAttribute="trailing" constant="60" id="lO1-NW-XhU"/>
                                     <constraint firstItem="utG-rW-W36" firstAttribute="leading" secondItem="8aE-0x-FcV" secondAttribute="leading" constant="10" id="tlc-EM-FIG"/>
-                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="QZa-Iv-sZV" secondAttribute="trailing" constant="70" id="xDk-7G-XIo"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="6ck-zC-raS">

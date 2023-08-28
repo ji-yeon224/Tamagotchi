@@ -88,8 +88,9 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch setting[indexPath.row] {
         case .name:
-            let vc = sb.instantiateViewController(identifier: NameChangeViewController.identifier) as! NameChangeViewController
-            navigationController?.pushViewController(vc, animated: true)
+//            let vc = sb.instantiateViewController(identifier: NameChangeViewController.identifier) as! NameChangeViewController
+//            navigationController?.pushViewController(vc, animated: true)
+            transitionView(viewController: NameChangeViewController.self, storyboard: "Main", style: .push)
             
         case .change:
             changeTamagotchi()

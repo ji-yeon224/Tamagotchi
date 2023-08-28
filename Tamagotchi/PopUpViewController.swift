@@ -27,9 +27,10 @@ class PopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        //print(tamaInfo)
         setDesignView()
         setNameLabel(label: tamaNameLabel)
+        setBorder(view: tamaNameLabel)
         
 
     }

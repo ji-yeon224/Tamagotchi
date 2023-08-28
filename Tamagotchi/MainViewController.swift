@@ -195,6 +195,7 @@ extension MainViewController {
         backVIew.backgroundColor = setBackgroundColor()
         nameLabel.text = " \(tamaInfo.name) "
         setNameLabel(label: nameLabel)
+        setBorder(view: nameLabel)
         
         
         tamaImageView.contentMode = .scaleAspectFill

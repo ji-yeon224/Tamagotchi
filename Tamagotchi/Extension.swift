@@ -26,9 +26,9 @@ extension UIViewController {
         label.font = .systemFont(ofSize: 13, weight: .light)
         label.textColor = setFontColor()
         label.textAlignment = .center
-        label.layer.borderWidth = 1
-        label.layer.borderColor = setFontColor().cgColor
-        label.layer.cornerRadius = 5
+//        label.layer.borderWidth = 1
+//        label.layer.borderColor = setFontColor().cgColor
+//        label.layer.cornerRadius = 5
     }
     
 }
