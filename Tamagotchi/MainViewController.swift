@@ -59,7 +59,6 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.addKeyboardNotifications()
-        print(#function, userName)
         //userName = UserDefaults.standard.string(forKey: "userName")!
         NotificationCenter.default.addObserver(self, selector: #selector(getName), name: NSNotification.Name("ChangeInfo"), object: nil)
         title = "\(userName)님의 다마고치"
@@ -68,7 +67,6 @@ class MainViewController: UIViewController {
     }
     
     @objc func getName(notification: NSNotification) {
-        print(#function)
         userName = notification.userInfo?["name"] as? String ?? "대장"
     }
     
@@ -90,8 +88,9 @@ class MainViewController: UIViewController {
     
     @IBAction func mealButtonClicked(_ sender: UIButton) {
         
+        
         do {
-            let result = try validateUserInputError(num: mealTextField.text ?? "0", max: Limit.maximumOnetimeMeal)
+            _ = try validateUserInputError(num: mealTextField.text ?? "0", max: Limit.maximumOnetimeMeal)
         } catch{
             return
         }
@@ -113,7 +112,7 @@ class MainViewController: UIViewController {
     @IBAction func waterButtonClicked(_ sender: UIButton) {
         
         do {
-            let result = try validateUserInputError(num: waterTextField.text ?? "0", max: Limit.maximumOnetimeWater)
+            _ = try validateUserInputError(num: waterTextField.text ?? "0", max: Limit.maximumOnetimeWater)
         } catch{
             return
         }
@@ -132,6 +131,10 @@ class MainViewController: UIViewController {
     }
     
     func validateUserInputError(num: String, max: Int) throws -> Bool {
+        
+        if num.count == 0 { //텍스트 필드가 빈 상태 -> 오류x
+            return true
+        }
         guard Int(num) != nil else {
             throw ValidationError.isNotInt
         }
