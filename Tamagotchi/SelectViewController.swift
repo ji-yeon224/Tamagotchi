@@ -94,7 +94,7 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
             let tamaInfo = tamaList.tamagotchi[indexPath.row]
             vc.tamaInfo = tamaInfo
             vc.state = state
-            
+            print(UserDefaults.standard.string(forKey: "userName")!)
             
             present(vc, animated: true)
             //transitionView(viewController: PopUpViewController.self, storyboard: "Main", style: .presentFullNavigation)

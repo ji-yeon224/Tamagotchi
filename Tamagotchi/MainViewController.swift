@@ -38,15 +38,15 @@ class MainViewController: UIViewController {
             UserDefaults.standard.set(try? PropertyListEncoder().encode(tamaInfo), forKey: tamaInfo.name)
         }
     }
-    var userName = ""
+    var userName = UserDefaults.standard.string(forKey: "userName")!
     let messageList = Message()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tamaInfo = getTamaInfo()
         tamaName = UserDefaults.standard.string(forKey: "selectedTama") ?? "empty"
+        //NotificationCenter.default.addObserver(self, selector: #selector(getName), name: NSNotification.Name("ChangeInfo"), object: nil)
         title = "\(userName)님의 다마고치"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(showSettingView))
         
@@ -57,11 +57,19 @@ class MainViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         self.addKeyboardNotifications()
-        userName = UserDefaults.standard.string(forKey: "userName")!
+        print(#function, userName)
+        //userName = UserDefaults.standard.string(forKey: "userName")!
+        NotificationCenter.default.addObserver(self, selector: #selector(getName), name: NSNotification.Name("ChangeInfo"), object: nil)
         title = "\(userName)님의 다마고치"
         
         changeTamaInfo() //이미지 정보 메세지 변경
+    }
+    
+    @objc func getName(notification: NSNotification) {
+        print(#function)
+        userName = notification.userInfo?["name"] as? String ?? "대장"
     }
     
     override func viewWillDisappear(_ animated: Bool) {

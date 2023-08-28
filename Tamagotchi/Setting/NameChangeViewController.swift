@@ -14,14 +14,17 @@ class NameChangeViewController: UIViewController {
     @IBOutlet var underLineView: UIView!
     @IBOutlet var nameChangeTextField: UITextField!
     let maxLength = 6
+    var userName = ""
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(#function, userName)
         title = "대장님 이름 변경하기"
         nameChangeTextField.text = UserDefaults.standard.string(forKey: "userName")
-        nameChangeTextField.placeholder = "대장님 이름을 알려주세요!"
+        NotificationCenter.default.addObserver(self, selector: #selector(getName), name:  NSNotification.Name("ChangeInfo"), object: nil)
         
+        nameChangeTextField.placeholder = "대장님 이름을 알려주세요!"
         view.backgroundColor = setBackgroundColor()
         underLineView.backgroundColor = .darkGray
         nameChangeTextField.backgroundColor = .clear
@@ -31,6 +34,12 @@ class NameChangeViewController: UIViewController {
         
         
 
+    }
+    @objc func getName(notification: NSNotification) {
+        
+        userName = notification.userInfo?["name"] as? String ?? "대장"
+        print("NameChange", userName)
+        
     }
     
     @IBAction func returnKeyClicked(_ sender: UITextField) {
@@ -61,6 +70,8 @@ class NameChangeViewController: UIViewController {
             print("error")
             return
         }
+        
+        NotificationCenter.default.post(name: NSNotification.Name("ChangeInfo"), object: nil, userInfo: ["name": removeWhiteSpaceText])
         
         UserDefaults.standard.set(removeWhiteSpaceText, forKey: "userName")
         navigationController?.popViewController(animated: true)

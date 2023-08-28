@@ -22,7 +22,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if !isLaunched { //처음접속
             
             UserDefaults.standard.set("대장", forKey: "userName")
+            
             let vc = sb.instantiateViewController(withIdentifier: SelectViewController.identifier) as! SelectViewController
+            
             let nav = UINavigationController(rootViewController: vc)
             window?.rootViewController = nav
         } else { //데이터 존재
