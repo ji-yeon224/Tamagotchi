@@ -9,7 +9,6 @@ import UIKit
 
 class SelectViewController: UIViewController {
     
-    static let identifier = "SelectViewController"
 
     @IBOutlet var collectionView: UICollectionView!
     
@@ -86,10 +85,8 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(identifier: PopUpViewController.identifier) as! PopUpViewController
+//        vc.modalPresentationStyle = .overFullScreen
         
-        
-        
-        vc.modalPresentationStyle = .overFullScreen
         if indexPath.row >= tamaList.tamagotchi.count { //준비 셀 클릭 시
             showAlert("아직 준비중입니다!!")
             
@@ -97,9 +94,10 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
             let tamaInfo = tamaList.tamagotchi[indexPath.row]
             vc.tamaInfo = tamaInfo
             vc.state = state
-            
+            print(UserDefaults.standard.string(forKey: "userName")!)
             
             present(vc, animated: true)
+            //transitionView(viewController: PopUpViewController.self, storyboard: "Main", style: .presentFullNavigation)
         }
         
         

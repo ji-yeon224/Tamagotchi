@@ -9,19 +9,22 @@ import UIKit
 
 class NameChangeViewController: UIViewController {
     
-    static let identifier = "NameChangeViewController"
+    //static let identifier = "NameChangeViewController"
     
     @IBOutlet var underLineView: UIView!
     @IBOutlet var nameChangeTextField: UITextField!
     let maxLength = 6
+    var userName = ""
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(#function, userName)
         title = "대장님 이름 변경하기"
         nameChangeTextField.text = UserDefaults.standard.string(forKey: "userName")
-        nameChangeTextField.placeholder = "대장님 이름을 알려주세요!"
+        NotificationCenter.default.addObserver(self, selector: #selector(getName), name:  NSNotification.Name("ChangeInfo"), object: nil)
         
+        nameChangeTextField.placeholder = "대장님 이름을 알려주세요!"
         view.backgroundColor = setBackgroundColor()
         underLineView.backgroundColor = .darkGray
         nameChangeTextField.backgroundColor = .clear
@@ -31,6 +34,12 @@ class NameChangeViewController: UIViewController {
         
         
 
+    }
+    @objc func getName(notification: NSNotification) {
+        
+        userName = notification.userInfo?["name"] as? String ?? "대장"
+        print("NameChange", userName)
+        
     }
     
     @IBAction func returnKeyClicked(_ sender: UITextField) {
@@ -51,21 +60,43 @@ class NameChangeViewController: UIViewController {
             showAlert("이름을 입력해주세요!")
             return
         }
+        
       
         //앞 뒤 공백 제거
-        let removeWhiteSpace = text.trimmingCharacters(in: .whitespaces)
-        
-        if removeWhiteSpace.count == 0 {
-            showAlert("이름을 입력해주세요!")
+        let removeWhiteSpaceText = text.trimmingCharacters(in: .whitespaces)
+        do {
+            let result = try validateNicknameInput(text: removeWhiteSpaceText)
+        } catch {
+            print("error")
             return
         }
-        if removeWhiteSpace.count < 2 || removeWhiteSpace.count > 6 {
-            showAlert("2글자 이상 6글자 이하로 작성해주세요!")
-        } else {
-            UserDefaults.standard.set(removeWhiteSpace, forKey: "userName")
-            navigationController?.popViewController(animated: true)
+        
+        NotificationCenter.default.post(name: NSNotification.Name("ChangeInfo"), object: nil, userInfo: ["name": removeWhiteSpaceText])
+        
+        UserDefaults.standard.set(removeWhiteSpaceText, forKey: "userName")
+        navigationController?.popViewController(animated: true)
+        
+        
+    }
+    
+    func validateNicknameInput(text: String) throws -> Bool {
+        
+        guard !(text.isEmpty) else {
+            showAlert("이름을 입력해주세요!")
+            throw ValidationError.emptyInput
         }
         
+        guard text.count >= 2 else {
+            showAlert("2글자 이상 6글자 이하로 작성해주세요!")
+            throw ValidationError.isMinInput
+        }
+        
+        guard text.count <= 6 else {
+            showAlert("2글자 이상 6글자 이하로 작성해주세요!")
+            throw ValidationError.isMaxInput
+        }
+        
+        return true
     }
     
     func showAlert(_ message: String) {

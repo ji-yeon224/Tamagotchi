@@ -13,10 +13,10 @@ enum Setting: CaseIterable {
 
 class SettingViewController: UIViewController {
     
-    static let identifier = "SettingViewController"
+    //static let identifier = "SettingViewController"
     
     var tamaList:[Tamagotchi] = []
-    
+    var userName = ""
     
     @IBOutlet var settingTableView: UITableView!
     
@@ -45,9 +45,19 @@ class SettingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         let cell = settingTableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier) as! SettingTableViewCell
-        cell.subLabel.text = UserDefaults.standard.string(forKey: "userName")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(getName), name:  NSNotification.Name("ChangeInfo"), object: nil)
+        cell.subLabel.text = userName
         settingTableView.reloadData()
+    }
+    
+    @objc func getName(notification: NSNotification) {
+        
+        userName = notification.userInfo?["name"] as? String ?? "대장"
+        
+        
     }
     
 
@@ -68,7 +78,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch setting[indexPath.row] {
         case .name:
-            cell.configureCell(img: "pencil", title: "내 이름 설정하기", sub: UserDefaults.standard.string(forKey: "userName")!)
+            cell.configureCell(img: "pencil", title: "내 이름 설정하기", sub: userName)
         case .change:
             cell.configureCell(img: "moon.fill", title: "다마고치 변경하기", sub: "")
         case .reset:
@@ -88,8 +98,9 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch setting[indexPath.row] {
         case .name:
-            let vc = sb.instantiateViewController(identifier: NameChangeViewController.identifier) as! NameChangeViewController
-            navigationController?.pushViewController(vc, animated: true)
+//            let vc = sb.instantiateViewController(identifier: NameChangeViewController.identifier) as! NameChangeViewController
+//            navigationController?.pushViewController(vc, animated: true)
+            transitionView(viewController: NameChangeViewController.self, storyboard: "Main", style: .push)
             
         case .change:
             changeTamagotchi()

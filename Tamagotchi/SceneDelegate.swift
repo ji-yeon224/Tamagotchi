@@ -16,16 +16,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
      
         guard let _ = (scene as? UIWindowScene) else { return }
      
-        
-        //UserDefaults.standard.set(false, forKey: "isLaunched")
-        
         isLaunched = UserDefaults.standard.bool(forKey: "isLaunched")
         
         let sb = UIStoryboard(name: "Main", bundle: nil)
         if !isLaunched { //처음접속
             
             UserDefaults.standard.set("대장", forKey: "userName")
+            
             let vc = sb.instantiateViewController(withIdentifier: SelectViewController.identifier) as! SelectViewController
+            
             let nav = UINavigationController(rootViewController: vc)
             window?.rootViewController = nav
         } else { //데이터 존재

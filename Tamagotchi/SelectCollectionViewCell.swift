@@ -9,7 +9,6 @@ import UIKit
 
 class SelectCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = "SelectCollectionViewCell"
     
     let tamagotchi = Tamagotchi.allCases
 

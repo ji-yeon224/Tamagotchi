@@ -9,8 +9,6 @@ import UIKit
 
 class PopUpViewController: UIViewController {
     
-    static let identifier = "PopUpViewController"
-    
     
     @IBOutlet var backView: UIView!
     @IBOutlet var popUpMainView: UIView!
@@ -29,9 +27,10 @@ class PopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        //print(tamaInfo)
         setDesignView()
         setNameLabel(label: tamaNameLabel)
+        setBorder(view: tamaNameLabel)
         
 
     }

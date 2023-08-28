@@ -7,9 +7,13 @@
 
 import UIKit
 
+struct Limit {
+    static let maximumOnetimeWater = 50
+    static let maximumOnetimeMeal = 100
+}
+
 class MainViewController: UIViewController {
     
-    static let identifier = "MainViewController"
     
     
     @IBOutlet var textImageView: UIImageView!
@@ -34,15 +38,15 @@ class MainViewController: UIViewController {
             UserDefaults.standard.set(try? PropertyListEncoder().encode(tamaInfo), forKey: tamaInfo.name)
         }
     }
-    var userName = ""
+    var userName = UserDefaults.standard.string(forKey: "userName")!
     let messageList = Message()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tamaInfo = getTamaInfo()
         tamaName = UserDefaults.standard.string(forKey: "selectedTama") ?? "empty"
+        //NotificationCenter.default.addObserver(self, selector: #selector(getName), name: NSNotification.Name("ChangeInfo"), object: nil)
         title = "\(userName)님의 다마고치"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(showSettingView))
         
@@ -53,11 +57,17 @@ class MainViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         self.addKeyboardNotifications()
-        userName = UserDefaults.standard.string(forKey: "userName")!
+        //userName = UserDefaults.standard.string(forKey: "userName")!
+        NotificationCenter.default.addObserver(self, selector: #selector(getName), name: NSNotification.Name("ChangeInfo"), object: nil)
         title = "\(userName)님의 다마고치"
         
         changeTamaInfo() //이미지 정보 메세지 변경
+    }
+    
+    @objc func getName(notification: NSNotification) {
+        userName = notification.userInfo?["name"] as? String ?? "대장"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,11 +88,16 @@ class MainViewController: UIViewController {
     
     @IBAction func mealButtonClicked(_ sender: UIButton) {
         
+        
+        do {
+            _ = try validateUserInputError(num: mealTextField.text ?? "0", max: Limit.maximumOnetimeMeal)
+        } catch{
+            return
+        }
+        
         if mealTextField.text!.count == 0 {
             tamaInfo.meal += 1
             changeTamaInfo()
-        } else if Int(mealTextField.text!) ?? 0 > 99 { //한 번에 먹을 수 있는 최대치 초과
-            changeMessage(messageList.overEatMessage.randomElement()!)
         } else {
             tamaInfo.meal += Int(mealTextField.text!) ?? 0
             mealTextField.text = ""
@@ -96,11 +111,15 @@ class MainViewController: UIViewController {
     
     @IBAction func waterButtonClicked(_ sender: UIButton) {
         
+        do {
+            _ = try validateUserInputError(num: waterTextField.text ?? "0", max: Limit.maximumOnetimeWater)
+        } catch{
+            return
+        }
+        
         if waterTextField.text!.count == 0 {
             tamaInfo.water += 1
             changeTamaInfo()
-        } else if Int(waterTextField!.text!) ?? 0 > 49 { //한 번에 먹을 수 있는 최대치 초과
-            changeMessage(messageList.overEatMessage.randomElement()!)
         } else {
             tamaInfo.water += Int(waterTextField!.text!) ?? 0
             waterTextField.text = ""
@@ -109,6 +128,24 @@ class MainViewController: UIViewController {
         view.endEditing(true)
        
 
+    }
+    
+    func validateUserInputError(num: String, max: Int) throws -> Bool {
+        
+        if num.count == 0 { //텍스트 필드가 빈 상태 -> 오류x
+            return true
+        }
+        guard Int(num) != nil else {
+            throw ValidationError.isNotInt
+        }
+        
+        guard Int(num)! < max else {
+            changeMessage(messageList.overEatMessage.randomElement()!)
+            throw ValidationError.isMaxInput
+        }
+        
+        return true
+        
     }
 
     
@@ -169,6 +206,7 @@ extension MainViewController {
         backVIew.backgroundColor = setBackgroundColor()
         nameLabel.text = " \(tamaInfo.name) "
         setNameLabel(label: nameLabel)
+        setBorder(view: nameLabel)
         
         
         tamaImageView.contentMode = .scaleAspectFill
@@ -213,24 +251,22 @@ extension MainViewController {
   
     
     func designButton(button: UIButton, image: String, title: String) {
-        
-        var config = UIButton.Configuration.filled()
+
+        var config = UIButton.Configuration.plain()
         config.title = title
         config.image = UIImage(systemName: image)
-        config.buttonSize = .small
         config.baseForegroundColor = setFontColor()
-        config.baseBackgroundColor = setBackgroundColor()
+        config.buttonSize = .small
         config.imagePadding = 4
         config.imagePlacement = .leading
         config.titleAlignment = .center
         config.cornerStyle = .capsule
-        
+
         button.configuration = config
-        button.layer.cornerRadius = 10
-        button.layer.borderColor = setFontColor().cgColor
-        button.layer.borderWidth = 1
-        
+
     }
+    
+    
 }
 
 //텍스트필드 누를 시 키보드만큼 화면 올라감
